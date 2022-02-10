@@ -1,0 +1,191 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ERP",
+        "description": "Aplicação desenvolvida para apresentar conceitos gerais do node",
+        "contact": {
+            "email": "bellarpjf@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [{
+        "url": "http://localhost:3000"
+    }],
+    "paths": {
+        "/employee/{id}": {
+            "get": {
+                "summary": "Busca funcionário",
+                "description": "Endpoint responsável por buscar um funcionário",
+                "tags": ["Employee"],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID do funcionário",
+                    "required": true,
+                    "style": "simple"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Employee"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deleção de funcionário",
+                "description": "Endpoint responsável por deletar um funcionário",
+                "tags": ["Employee"],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID do funcionário",
+                    "required": true,
+                    "style": "simple"
+                }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Employee"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Employee"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employee": {
+            "get": {
+                "summary": "Busca funcionário",
+                "description": "Endpoint responsável por buscar um funcionário",
+                "tags": ["Employee"],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID do funcionário",
+                    "required": true,
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "style": "simple"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Employee"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Busca funcionário",
+                "description": "Endpoint responsável por buscar um funcionário",
+                "tags": ["Employee"],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Employee"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cadastro de funcionário",
+                "description": "Endpoint responsável pelo cadastro de um funcionário",
+                "tags": ["Employee"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Employee"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Employee"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Edição de funcionário",
+                "description": "Endpoint responsável por editar um funcionário",
+                "tags": ["Employee"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Employee"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Employee"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Employee": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "nome": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
