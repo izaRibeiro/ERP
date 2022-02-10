@@ -8,10 +8,6 @@ async function getEmployee(id) {
     return await Employee.findById(id)
 }
 
-async function createEmployee(employee) {
-    return await Employee.create(employee)
-}
-
 async function deleteEmployee(id) {
     return await Employee.deleteOne({ "_id": id })
 }
@@ -27,7 +23,6 @@ async function updateEmployee(employee) {
 export default {
     getEmployees,
     getEmployee,
-    createEmployee,
     deleteEmployee,
     updateEmployee
 }
