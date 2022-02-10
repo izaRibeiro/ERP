@@ -1,7 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import EmployeeSchema from './models/Employee.js'
 import dotenv from 'dotenv'
+import employeeRouter from './routes/employee.route.js'
 
 const app = express()
 dotenv.config()
@@ -14,6 +14,7 @@ mongoose.connect(
 );
 
 app.use(express.json())
+app.use('/employee', employeeRouter)
 
 app.listen(3000, () => {
     console.log('API Iniciada!!')
