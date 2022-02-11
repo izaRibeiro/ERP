@@ -24,7 +24,9 @@ app.use('/auth', authRouter)
 app.use('/employee', employeeRouter)
 app.use('/product', productRouter)
 app.use('/sale', saleRouter)
-
+app.use((err, req, res, next) => {
+    res.status(400).send({ error: err.message })
+})
 app.listen(3000, () => {
     console.log('API Iniciada!!')
 })
