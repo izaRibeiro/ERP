@@ -15,7 +15,7 @@ async function deleteEmployee(id) {
 async function updateEmployee(employee) {
     return await Employee.updateOne({ "_id": employee.id }, {
         $set: {
-            nome: employee.nome,
+            name: employee.name,
         }
     })
 }

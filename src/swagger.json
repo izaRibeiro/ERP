@@ -181,7 +181,7 @@
                     "id": {
                         "type": "number"
                     },
-                    "nome": {
+                    "name": {
                         "type": "string"
                     }
                 }

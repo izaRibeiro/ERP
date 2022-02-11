@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs/dist/bcrypt.js';
 import mongoose from 'mongoose'
 
 const EmployeeSchema = new mongoose.Schema({
-    nome: {
+    name: {
         type: String,
         required: true,
     },
