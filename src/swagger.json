@@ -12,6 +12,50 @@
         "url": "http://localhost:3000"
     }],
     "paths": {
+        "/auth/authenticate": {
+            "post": {
+                "summary": "Autenticação do usuário",
+                "description": "Endpoint responsável pelo login de um usuário",
+                "tags": ["Auth"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EmployeeLogin"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+
+                    }
+                }
+            }
+        },
+        "/auth/register": {
+            "post": {
+                "summary": "Cadastro de funcionário",
+                "description": "Endpoint responsável pelo cadastro de um funcionário",
+                "tags": ["Auth"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Employee"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+
+                    }
+                }
+            }
+        },
         "/employee/{id}": {
             "get": {
                 "summary": "Busca funcionário",
@@ -26,14 +70,8 @@
                 }],
                 "responses": {
                     "200": {
-                        "description": "Ok",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Employee"
-                                }
-                            }
-                        }
+                        "description": "Ok"
+
                     }
                 }
             },
@@ -48,100 +86,23 @@
                     "required": true,
                     "style": "simple"
                 }],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Employee"
-                            }
-                        }
-                    }
-                },
                 "responses": {
                     "200": {
-                        "description": "Ok",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Employee"
-                                }
-                            }
-                        }
+                        "description": "Ok"
+
                     }
                 }
             }
         },
         "/employee": {
             "get": {
-                "summary": "Busca funcionário",
-                "description": "Endpoint responsável por buscar um funcionário",
-                "tags": ["Employee"],
-                "parameters": [{
-                    "name": "id",
-                    "in": "path",
-                    "description": "ID do funcionário",
-                    "required": true,
-                    "schema": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "style": "simple"
-                }],
-                "responses": {
-                    "200": {
-                        "description": "Ok",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Employee"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "get": {
-                "summary": "Busca funcionário",
-                "description": "Endpoint responsável por buscar um funcionário",
+                "summary": "Busca funcionários",
+                "description": "Endpoint responsável por buscar funcionários",
                 "tags": ["Employee"],
                 "responses": {
                     "200": {
-                        "description": "Ok",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Employee"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "post": {
-                "summary": "Cadastro de funcionário",
-                "description": "Endpoint responsável pelo cadastro de um funcionário",
-                "tags": ["Employee"],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Employee"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Ok",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Employee"
-                                }
-                            }
-                        }
+                        "description": "Ok"
+
                     }
                 }
             },
@@ -160,20 +121,396 @@
                 },
                 "responses": {
                     "200": {
+                        "description": "Ok"
+
+                    }
+                }
+            }
+        },
+        "/product/{id}": {
+            "get": {
+                "summary": "Busca produtos",
+                "description": "Endpoint responsável por buscar produtos",
+                "tags": ["Product"],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID do produto",
+                    "required": true,
+                    "style": "simple"
+                }],
+                "responses": {
+                    "200": {
                         "description": "Ok",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Employee"
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deleção de produto",
+                "description": "Endpoint responsável por deletar um produto",
+                "tags": ["Product"],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID do produto",
+                    "required": true,
+                    "style": "simple"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
                                 }
                             }
                         }
                     }
                 }
             }
+        },
+        "/product": {
+            "get": {
+                "summary": "Busca produto",
+                "description": "Endpoint responsável por buscar um produto",
+                "tags": ["Product"],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID do produto",
+                    "required": true,
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "style": "simple"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Busca produto",
+                "description": "Endpoint responsável por buscar um produto",
+                "tags": ["Product"],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cadastro de produto",
+                "description": "Endpoint responsável pelo cadastro de um produto",
+                "tags": ["Product"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Product"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Edição de produto",
+                "description": "Endpoint responsável por editar um produto",
+                "tags": ["Product"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Product"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sale/{id}": {
+            "get": {
+                "summary": "Busca venda",
+                "description": "Endpoint responsável por buscar uma venda",
+                "tags": ["Sale"],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID da venda",
+                    "required": true,
+                    "style": "simple"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Sale"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deleção de venda",
+                "description": "Endpoint responsável por deletar uma venda",
+                "tags": ["Sale"],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID da venda",
+                    "required": true,
+                    "style": "simple"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Sale"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sale": {
+            "get": {
+                "summary": "Busca vendas",
+                "description": "Endpoint responsável por buscar vendas",
+                "tags": ["Sale"],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "description": "ID da venda",
+                    "required": true,
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "style": "simple"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Sale"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Busca venda",
+                "description": "Endpoint responsável por buscar uma venda",
+                "tags": ["Sale"],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Sale"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cadastro de venda",
+                "description": "Endpoint responsável pelo cadastro de uma venda",
+                "tags": ["Sale"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Sale"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Sale"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Edição de venda",
+                "description": "Endpoint responsável por editar uma venda",
+                "tags": ["Sale"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Sale"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Sale"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/report": {
+            "get": {
+                "summary": "Busca total vendas",
+                "description": "Endpoint responsável por buscar o total de venda",
+                "tags": ["Report"],
+                "parameters": [{
+                    "name": "email",
+                    "in": "header",
+                    "description": "Email do funcionário",
+                    "required": true,
+                    "style": "simple"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Sale"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/report/seller/:id": {
+            "get": {
+                "summary": "Busca total vendas de determinado funcionário",
+                "description": "Endpoint responsável por buscar o total de venda de determinado funcionário",
+                "tags": ["Report"],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do funcionário",
+                        "required": true,
+                        "style": "simple"
+                    },
+                    {
+                        "name": "email",
+                        "in": "header",
+                        "description": "Email do funcionário",
+                        "required": true,
+                        "style": "simple"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    }
+                }
+            }
+        },
+        "/report/amount": {
+            "get": {
+                "summary": "Busca valor total adquirido com vendas",
+                "description": "Endpoint responsável por buscar o valor total adquirido com vendas",
+                "tags": ["Report"],
+                "parameters": [{
+                    "name": "email",
+                    "in": "header",
+                    "description": "Email do funcionário",
+                    "required": true,
+                    "style": "simple"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+
+                    }
+                }
+            }
         }
     },
     "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
         "schemas": {
             "Employee": {
                 "type": "object",
@@ -183,9 +520,65 @@
                     },
                     "name": {
                         "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": ["admin", "seller"]
                     }
+                }
+            },
+            "EmployeeLogin": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Product": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number"
+                    },
+                    "stock": {
+                        "type": "number"
+                    }
+                }
+            },
+            "Sale": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "amount": {
+                        "type": "number"
+                    },
+                    "employeeId": {
+                        "type": "number"
+                    },
+                    "products": ["array"]
                 }
             }
         }
-    }
+    },
+    "security": [{
+        "bearerAuth": []
+    }]
 }
