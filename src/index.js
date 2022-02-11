@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import employeeRouter from './routes/employee.route.js'
 import productRouter from './routes/product.route.js'
 import saleRouter from './routes/sale.route.js'
+import reportRouter from './routes/report.route.js'
 import authRouter from './routes/auth.route.js'
 import swaggerUi from 'swagger-ui-express'
 import swaggerDocs from './swagger.json'
@@ -24,6 +25,7 @@ app.use('/auth', authRouter)
 app.use('/employee', employeeRouter)
 app.use('/product', productRouter)
 app.use('/sale', saleRouter)
+app.use('/report', reportRouter)
 app.use((err, req, res, next) => {
     res.status(400).send({ error: err.message })
 })

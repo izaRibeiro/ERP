@@ -16,6 +16,11 @@ const EmployeeSchema = new mongoose.Schema({
         required: true,
         selected: false,
     },
+    type: {
+        type: String,
+        enum: ['admin', 'seller'],
+        required: true,
+    },
     createdAt: {
         type: Date,
         default: Date.now,
