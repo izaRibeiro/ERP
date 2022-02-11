@@ -9,5 +9,7 @@ router.use(authMiddleware)
 router.use(permissionMiddleware)
 
 router.get("/", ReportController.getTotalSales)
+router.get("/amount", ReportController.getTotalAmount)
+router.get("/seller/:id", ReportController.getSellerSales)
 
 export default router;
