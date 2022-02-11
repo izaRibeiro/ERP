@@ -8,6 +8,10 @@ async function getEmployee(id) {
     return await EmployeeRepository.getEmployee(id)
 }
 
+async function getEmployeeByemail(id) {
+    return await EmployeeRepository.getEmployeeByemail(id)
+}
+
 async function deleteEmployee(id) {
     return await EmployeeRepository.deleteEmployee(id)
 }
@@ -19,6 +23,7 @@ async function updateEmployee(employee) {
 export default {
     getEmployees,
     getEmployee,
+    getEmployeeByemail,
     deleteEmployee,
     updateEmployee
 }

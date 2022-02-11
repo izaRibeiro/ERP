@@ -8,6 +8,10 @@ async function getEmployee(id) {
     return await Employee.findById(id)
 }
 
+async function getEmployeeByEmail(email) {
+    return await Employee.findOne({ email })
+}
+
 async function deleteEmployee(id) {
     return await Employee.deleteOne({ "_id": id })
 }
@@ -23,6 +27,7 @@ async function updateEmployee(employee) {
 export default {
     getEmployees,
     getEmployee,
+    getEmployeeByEmail,
     deleteEmployee,
     updateEmployee
 }

@@ -16,6 +16,14 @@ async function getEmployee(req, res, next) {
     }
 }
 
+async function getEmployeeByEmail(req, res, next) {
+    try {
+        res.send(await EmployeeService.getEmployeeByEmail(req.params.id))
+    } catch (err) {
+        next(err)
+    }
+}
+
 async function deleteEmployee(req, res, next) {
     try {
         res.send(await EmployeeService.deleteEmployee(req.params.id))
@@ -35,6 +43,7 @@ async function updateEmployee(req, res, next) {
 export default {
     getEmployees,
     getEmployee,
+    getEmployeeByEmail,
     deleteEmployee,
     updateEmployee
 }
